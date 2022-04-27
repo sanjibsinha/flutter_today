@@ -2,16 +2,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class WebViewStack extends StatefulWidget {
-  const WebViewStack({required this.controller, Key? key}) : super(key: key);
+class SourceOfWebView extends StatefulWidget {
+  const SourceOfWebView({required this.webViewController, Key? key})
+      : super(key: key);
 
-  final Completer<WebViewController> controller;
+  final Completer<WebViewController> webViewController;
 
   @override
-  State<WebViewStack> createState() => _WebViewStackState();
+  State<SourceOfWebView> createState() => _SourceOfWebViewState();
 }
 
-class _WebViewStackState extends State<WebViewStack> {
+class _SourceOfWebViewState extends State<SourceOfWebView> {
   var loadingPercentage = 0;
 
   @override
@@ -20,8 +21,8 @@ class _WebViewStackState extends State<WebViewStack> {
       children: [
         WebView(
           initialUrl: 'https://sanjibsinha.com',
-          onWebViewCreated: (webViewController) {
-            widget.controller.complete(webViewController);
+          onWebViewCreated: (webController) {
+            widget.webViewController.complete(webController);
           },
           onPageStarted: (url) {
             setState(() {

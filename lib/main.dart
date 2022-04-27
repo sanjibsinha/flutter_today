@@ -3,8 +3,6 @@ import 'view/flutter_today.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      home: FlutterToday(),
-    ),
+    const FlutterToday(),
   );
 }

@@ -1,27 +1,24 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
 import 'package:webview_flutter/webview_flutter.dart';
-import '../model/source_of_web_view.dart';
 
-class FlutterToday extends StatefulWidget {
+import '../model/happy_theme.dart';
+import '../controller/dashboard_home.dart';
+
+HappyTheme happyTheme = HappyTheme();
+
+class FlutterToday extends StatelessWidget {
   const FlutterToday({Key? key}) : super(key: key);
 
-  @override
-  State<FlutterToday> createState() => _FlutterTodayState();
-}
-
-class _FlutterTodayState extends State<FlutterToday> {
-  final controller = Completer<WebViewController>();
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Today'),
-      ),
-      body: SourceOfWebView(webViewController: controller),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Today',
+      theme: happyTheme.buildTheme(),
+      home: const DashBoardHome(),
     );
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
 import '../model/source_of_web_view.dart';
-import '../controller/navigation_controller.dart';
 
 class FlutterToday extends StatefulWidget {
   const FlutterToday({Key? key}) : super(key: key);
@@ -21,9 +20,6 @@ class _FlutterTodayState extends State<FlutterToday> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Today'),
-        actions: [
-          NavigationController(navigationController: controller),
-        ],
       ),
       body: SourceOfWebView(webViewController: controller),
     );

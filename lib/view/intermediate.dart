@@ -5,6 +5,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 class Intermediate extends StatefulWidget {
   const Intermediate({required this.webViewController, Key? key})
       : super(key: key);
+  static const routeName = '/intermediate';
 
   final Completer<WebViewController> webViewController;
 

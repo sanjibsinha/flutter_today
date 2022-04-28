@@ -4,6 +4,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class Beginner extends StatefulWidget {
   const Beginner({required this.webViewController, Key? key}) : super(key: key);
+  static const routeName = '/beginner';
 
   final Completer<WebViewController> webViewController;
 

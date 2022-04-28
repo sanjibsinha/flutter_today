@@ -5,6 +5,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 class FlutterApps extends StatefulWidget {
   const FlutterApps({required this.webViewController, Key? key})
       : super(key: key);
+  static const routeName = '/flutter-apps';
 
   final Completer<WebViewController> webViewController;
 

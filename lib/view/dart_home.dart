@@ -4,6 +4,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class DartHome extends StatefulWidget {
   const DartHome({required this.webViewController, Key? key}) : super(key: key);
+  static const routeName = '/dart';
 
   final Completer<WebViewController> webViewController;
 

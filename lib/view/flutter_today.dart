@@ -15,7 +15,10 @@ HappyTheme happyTheme = HappyTheme();
 class FlutterToday extends StatelessWidget {
   const FlutterToday({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  /// This widget is the root of your application.
+  /// this is third branch, we will add bottom navigation bar\
+  /// in the next branch
+
   @override
   Widget build(BuildContext context) {
     final controller = Completer<WebViewController>();

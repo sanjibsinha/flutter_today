@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
-import '../model/source_of_web_view.dart';
+import 'web_view_home.dart';
 
 class FlutterToday extends StatefulWidget {
   const FlutterToday({Key? key}) : super(key: key);
@@ -19,9 +20,16 @@ class _FlutterTodayState extends State<FlutterToday> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Today'),
+        title: Text(
+          'FlutterToday',
+          style: GoogleFonts.laila(
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.black54,
+          ),
+        ),
       ),
-      body: SourceOfWebView(webViewController: controller),
+      body: WebViewHome(webViewController: controller),
     );
   }
 }

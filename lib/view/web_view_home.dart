@@ -2,17 +2,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class SourceOfWebView extends StatefulWidget {
-  const SourceOfWebView({required this.webViewController, Key? key})
+class WebViewHome extends StatefulWidget {
+  const WebViewHome({required this.webViewController, Key? key})
       : super(key: key);
 
   final Completer<WebViewController> webViewController;
 
   @override
-  State<SourceOfWebView> createState() => _SourceOfWebViewState();
+  State<WebViewHome> createState() => _WebViewHomeState();
 }
 
-class _SourceOfWebViewState extends State<SourceOfWebView> {
+class _WebViewHomeState extends State<WebViewHome> {
   var loadingPercentage = 0;
 
   @override
@@ -39,20 +39,6 @@ class _SourceOfWebViewState extends State<SourceOfWebView> {
               loadingPercentage = 100;
             });
           },
-          /* navigationDelegate: (navigation) {
-            final host = Uri.parse(navigation.url).host;
-            if (host.contains('youtube.com')) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    'Blocking navigation to $host',
-                  ),
-                ),
-              );
-              return NavigationDecision.prevent;
-            }
-            return NavigationDecision.navigate;
-          }, */
           javascriptMode: JavascriptMode.unrestricted,
           javascriptChannels: _createJavascriptChannels(context),
         ),

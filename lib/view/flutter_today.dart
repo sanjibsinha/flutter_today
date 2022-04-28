@@ -9,6 +9,9 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import '../model/happy_theme.dart';
 import '../controller/dashboard_home.dart';
+import 'flutter_state_page.dart';
+import 'reading_guide_page.dart';
+import 'why_flutter_page.dart';
 
 HappyTheme happyTheme = HappyTheme();
 
@@ -38,6 +41,9 @@ class FlutterToday extends StatelessWidget {
             FlutterApps(webViewController: controller),
         DartHome.routeName: (context) =>
             DartHome(webViewController: controller),
+        WhyFlutterPage.routeName: (context) => const WhyFlutterPage(),
+        ReadingGuidePage.routeName: (context) => const ReadingGuidePage(),
+        FlutterStatePage.routeName: (context) => const FlutterStatePage(),
       },
     );
   }

@@ -23,8 +23,35 @@ class _DashBoardHomeState extends State<DashBoardHome>
     with SingleTickerProviderStateMixin {
   final controller = Completer<WebViewController>();
   TabController? _tabController;
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'First Page',
+    ),
+    Text(
+      'Second Page',
+    ),
+    Text(
+      'Third Page',
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   final List<Tab> topTabs = <Tab>[
+    Tab(
+      child: _widgetOptions.elementAt(0),
+    ),
+    Tab(
+      child: _widgetOptions.elementAt(1),
+    ),
+    Tab(
+      child: _widgetOptions.elementAt(2),
+    ),
     const Tab(child: Text('HOME')),
     const Tab(child: Text('BEGINNERS')),
     const Tab(child: Text('INTERMEDIATE')),
@@ -86,12 +113,54 @@ class _DashBoardHomeState extends State<DashBoardHome>
             children: [
               /// all categories displayed on tabs
               ///
+              _widgetOptions.elementAt(_selectedIndex),
+              _widgetOptions.elementAt(_selectedIndex),
+              _widgetOptions.elementAt(_selectedIndex),
               HomePage(webViewController: controller),
               Beginner(webViewController: controller),
               Intermediate(webViewController: controller),
               FlutterApps(webViewController: controller),
               DartHome(webViewController: controller),
             ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            /// customizing background color
+            ///
+            backgroundColor: Colors.amber,
+            mouseCursor: SystemMouseCursors.grab,
+            unselectedItemColor: Colors.deepOrangeAccent,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            type: BottomNavigationBarType.shifting,
+            selectedFontSize: 20,
+            selectedIconTheme: const IconThemeData(
+              color: Colors.amberAccent,
+            ),
+            selectedItemColor: Colors.amberAccent,
+            selectedLabelStyle: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'First Page',
+                backgroundColor: Colors.black38,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Second Page',
+                backgroundColor: Colors.black26,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Third Page',
+                backgroundColor: Colors.black45,
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            iconSize: 50,
+            onTap: _onItemTapped,
+            elevation: 5,
           ),
         ),
       ),

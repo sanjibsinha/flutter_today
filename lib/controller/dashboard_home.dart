@@ -25,11 +25,62 @@ class _DashBoardHomeState extends State<DashBoardHome>
   TabController? _tabController;
 
   final List<Tab> topTabs = <Tab>[
-    const Tab(child: Text('HOME')),
-    const Tab(child: Text('BEGINNERS')),
-    const Tab(child: Text('INTERMEDIATE')),
-    const Tab(child: Text('FLUTTER APPS')),
-    const Tab(child: Text('DART')),
+    Tab(
+      iconMargin: const EdgeInsets.only(bottom: 10.0),
+      child: Text(
+        'HOME',
+        textAlign: TextAlign.center,
+        style: GoogleFonts.lato(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+    ),
+    Tab(
+      child: Text(
+        'BEGINNERS',
+        textAlign: TextAlign.center,
+        style: GoogleFonts.lato(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+    ),
+    Tab(
+      child: Text(
+        'INTERMEDIATE',
+        textAlign: TextAlign.center,
+        style: GoogleFonts.lato(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+    ),
+    Tab(
+      child: Text(
+        'FLUTTER APPS',
+        textAlign: TextAlign.center,
+        style: GoogleFonts.lato(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+    ),
+    Tab(
+      child: Text(
+        'DART',
+        textAlign: TextAlign.center,
+        style: GoogleFonts.lato(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+    ),
   ];
 
   @override
@@ -67,18 +118,37 @@ class _DashBoardHomeState extends State<DashBoardHome>
           key: _scaffoldKey,
           appBar: AppBar(
             title: Text(
-              'FlutterToday',
+              'Flutter Today',
+              textAlign: TextAlign.center,
               style: GoogleFonts.laila(
-                fontSize: 35.0,
+                fontSize: 30.0,
                 fontWeight: FontWeight.bold,
-                color: Colors.deepPurple,
+                color: Colors.white,
               ),
             ),
+            centerTitle: true,
+
+            //backgroundColor: Colors.grey[400],
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.pink,
+                    Colors.grey,
+                  ],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+            ),
+            elevation: 20,
+            titleSpacing: 60,
             bottom: TabBar(
-              controller: _tabController,
-              indicatorColor: Colors.black,
-              tabs: topTabs,
               isScrollable: true,
+              indicatorColor: Colors.red,
+              indicatorWeight: 10,
+              controller: _tabController,
+              tabs: topTabs,
             ),
           ),
           body: TabBarView(
@@ -95,6 +165,13 @@ class _DashBoardHomeState extends State<DashBoardHome>
           ),
         ),
       ),
+    );
+  }
+
+  IconButton buildIcons(Icon icon) {
+    return IconButton(
+      onPressed: () {},
+      icon: icon,
     );
   }
 }

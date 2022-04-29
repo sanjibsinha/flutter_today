@@ -1,21 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
-import 'package:provider/provider.dart';
-
+import 'package:flutter_today/view/beginner.dart';
+import 'package:flutter_today/view/dart_home.dart';
+import 'package:flutter_today/view/flutter_apps.dart';
+import 'package:flutter_today/view/intermediate.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../model/global_green_scheme.dart';
-//import '../model/happy_theme.dart';
+import '../model/happy_theme.dart';
 import '../controller/dashboard_home.dart';
-import 'beginner.dart';
-import 'dart_home.dart';
-import 'flutter_apps.dart';
-import 'intermediate.dart';
-import 'flutter_state_page.dart';
-import 'reading_guide_page.dart';
-import 'why_flutter_page.dart';
+
+HappyTheme happyTheme = HappyTheme();
 
 class FlutterToday extends StatelessWidget {
   const FlutterToday({Key? key}) : super(key: key);
@@ -27,12 +22,10 @@ class FlutterToday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Completer<WebViewController>();
-    final ThemeData globalTheme =
-        Provider.of<GlobalGreenScheme>(context).globalTheme;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Today',
-      theme: globalTheme,
+      theme: happyTheme.buildTheme(),
       initialRoute: '/',
       routes: {
         '/': (context) => const DashBoardHome(),
@@ -45,9 +38,6 @@ class FlutterToday extends StatelessWidget {
             FlutterApps(webViewController: controller),
         DartHome.routeName: (context) =>
             DartHome(webViewController: controller),
-        WhyFlutterPage.routeName: (context) => const WhyFlutterPage(),
-        ReadingGuidePage.routeName: (context) => const ReadingGuidePage(),
-        FlutterStatePage.routeName: (context) => const FlutterStatePage(),
       },
     );
   }

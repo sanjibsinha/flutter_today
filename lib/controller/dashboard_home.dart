@@ -8,7 +8,10 @@ import 'package:flutter_today/view/flutter_apps.dart';
 import 'package:flutter_today/view/intermediate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../view/first_page.dart';
 import '../view/home_page.dart';
+import '../view/second_page.dart';
+import '../view/third_page.dart';
 
 class DashBoardHome extends StatefulWidget {
   const DashBoardHome({
@@ -23,6 +26,20 @@ class _DashBoardHomeState extends State<DashBoardHome>
     with SingleTickerProviderStateMixin {
   final controller = Completer<WebViewController>();
   TabController? _tabController;
+
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    FirstPage(),
+    SecondPage(),
+    ThirdPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   final List<Tab> topTabs = <Tab>[
     Tab(
@@ -151,27 +168,44 @@ class _DashBoardHomeState extends State<DashBoardHome>
               tabs: topTabs,
             ),
           ),
-          body: TabBarView(
-            controller: _tabController,
+          body: Column(
             children: [
-              /// all categories displayed on tabs
-              ///
-              HomePage(webViewController: controller),
-              Beginner(webViewController: controller),
-              Intermediate(webViewController: controller),
-              FlutterApps(webViewController: controller),
-              DartHome(webViewController: controller),
+              TabBarView(
+                controller: _tabController,
+                children: [
+                  /// all categories displayed on tabs
+                  ///
+                  HomePage(webViewController: controller),
+                  Beginner(webViewController: controller),
+                  Intermediate(webViewController: controller),
+                  FlutterApps(webViewController: controller),
+                  DartHome(webViewController: controller),
+                ],
+              ),
+              _widgetOptions.elementAt(_selectedIndex),
             ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.business),
+                label: 'Business',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.school),
+                label: 'School',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.amber[800],
+            onTap: _onItemTapped,
           ),
         ),
       ),
-    );
-  }
-
-  IconButton buildIcons(Icon icon) {
-    return IconButton(
-      onPressed: () {},
-      icon: icon,
     );
   }
 }

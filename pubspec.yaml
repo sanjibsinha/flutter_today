@@ -28,5 +28,7 @@ flutter:
 
   
   uses-material-design: true
+  assets:
+   - assets/www/index.html
 
   
